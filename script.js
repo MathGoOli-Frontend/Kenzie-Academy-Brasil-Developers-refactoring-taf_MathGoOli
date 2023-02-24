@@ -1,11 +1,137 @@
 // Implemente aqui as funções
+// não precisei usar var/let porque var não se usa e let não precisei por que não preciso mudar essas informações durante a execução do script
+// Homem
+const alturaHomem = 1.7
+const absHomem = 41
+const barRepHomem = 6
+const barSecondsHomen = 15
+const swimDistanceHomem = 100
+const swimTimeHomem = 60
+const diveTimeHomem = 30
+const runDistanceHomen1 = 3000
+const runTimeHomen1 = 12*60
+const runDistanceHomen2 = 5000
+const runTimeHomen2 = 20*60
+// Mulher
+// eu sei que algumas constantes são iguais tipo swimTimeHomem e swimTimeMulher mas preferi deixar separado porque na explicação do taf estao separadas
+const alturaMulher = 1.6
+const absMulher = 41
+const barRepMulher = 5
+const barSecondsmulher = 12
+const swimDistanceMulher = 100
+const swimTimeMulher = 60
+const diveTimeMulher = 30
+const runDistanceMulher1 = 4000
+const runTimeMulher1 = 15*60
+const runDistanceMulher2 = 6000
+const runTimeMulher2 = 22*60
+
+function isAbs(gender, absRep){
+    if (gender == "male"){
+        if (absRep >= absHomem){ // abnominais
+            return true
+        }
+    } else if (gender == "female"){
+        if (absRep >= absMulher){ // abnominais
+            return true
+    }
+    return false
+}
+}
+function isHeight(gender, height){
+    if (gender == "male"){
+        if(height >= alturaHomem){ // Altura
+            return true
+        }
+    }else if(gender == "female"){
+        if(height >= alturaMulher){ // Altura
+            return true
+        }
+    }
+    return false
+    }
+    
+
+function isBarReps(gender, barReps, barSeconds){
+    if (gender == "male"){
+        
+        if(barReps >= barRepHomem || barSeconds <= barSecondsHomen){
+            return true
+        }
+    
+    }else if(gender == "female"){
+        if(barReps >= barRepMulher|| barSeconds <= barSecondsmulher){
+            return true
+        }
+    }
+}
+function isSwim(gender,swimDistance, swimTime, diveTime){
+    if (gender == "male"){
+        if(swimDistance >= swimDistanceHomem && swimTime <= swimTimeHomem){
+            return true
+        }else if(diveTime <= diveTimeHomem){
+            return true
+        }
+        return false
+    }else if(gender == "female"){
+        if(swimDistance >= swimDistanceMulher && swimTime <= swimTimeMulher){
+            return true
+        }else if(diveTime <= diveTimeMulher){
+            return true
+        }
+        return false
+    }
+
+}
+function isRun(gender, runDistance, runTime){
+    if (gender == "male"){
+        if(runDistance >= runDistanceHomen1){ 
+            if (runTime <= runTimeHomen1){
+                return true
+            }else{
+                return false
+            }
+        }
+        if(runDistance >= runDistanceHomen2){
+            if (runTime <= runTimeHomen2){
+                return true
+            }else{
+                return false
+            }
+        }
+        return false
+
+    } else if (gender =="female"){
+        if(runDistance >= runDistanceMulher1){ 
+            if (runTime <= runTimeMulher1){
+                return true
+            }else{
+                return false
+            }
+        }else if(runDistance >= runDistanceMulher2){
+            if (runTime <= runTimeMulher2){
+                return true
+            }else{
+                return false
+            }
+        }
+        return false
+    }
+    
+}
 
 
-
-
-
-function areCandidateResultsValid() {
-
+function areCandidateResultsValid(gender, height, bareps, bartime, absRep, runDistance, runTime, swimDistance, swimTime, diveTime) {
+    const result = isAbs(gender, absRep) && isHeight(gender, height) && isBarReps(gender, bareps, bartime) && isSwim(gender, swimDistance, swimTime, diveTime) && isRun(gender,runDistance,runTime)
+    return result
+}
+function showMessage(message){
+    if (message == undefined){
+        message = false
+    }
+    let messageUpper = message.toString().toUpperCase()
+    console.log(messageUpper)
+    
 }
 
 // Chamando a função com os parametros recebidos via script de teste
@@ -24,3 +150,4 @@ const areCandidateValid = areCandidateResultsValid(
 );
 
 // Chame aqui a função que mostra o resultado no console
+showMessage(areCandidateValid)
