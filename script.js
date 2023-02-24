@@ -1,5 +1,8 @@
 // Implemente aqui as funções
-// não precisei usar var/let porque var não se usa e let não precisei por que não preciso mudar essas informações durante a execução do script
+
+/* funções que restornão booleanos tem como padrão começar com is por exemplo "isAbs" */
+
+//Config:
 // Homem
 const alturaHomem = 1.7
 const absHomem = 41
@@ -27,6 +30,7 @@ const runDistanceMulher2 = 6000
 const runTimeMulher2 = 22*60
 
 function isAbs(gender, absRep){
+    /* função que verifica se o candidato passou no teste de abdominais */
     if (gender == "male"){
         if (absRep >= absHomem){ // abnominais
             return true
@@ -39,6 +43,7 @@ function isAbs(gender, absRep){
 }
 }
 function isHeight(gender, height){
+    /* função que verifica se o candidato tem a altura nescessária*/
     if (gender == "male"){
         if(height >= alturaHomem){ // Altura
             return true
@@ -53,6 +58,7 @@ function isHeight(gender, height){
     
 
 function isBarReps(gender, barReps, barSeconds){
+    /* função que verifica se o candidato passou no teste de barra*/
     if (gender == "male"){
         
         if(barReps >= barRepHomem || barSeconds <= barSecondsHomen){
@@ -66,6 +72,7 @@ function isBarReps(gender, barReps, barSeconds){
     }
 }
 function isSwim(gender,swimDistance, swimTime, diveTime){
+    /* função que verifica se o candidato passou no teste de natação */
     if (gender == "male"){
         if(swimDistance >= swimDistanceHomem && swimTime <= swimTimeHomem){
             return true
@@ -84,6 +91,7 @@ function isSwim(gender,swimDistance, swimTime, diveTime){
 
 }
 function isRun(gender, runDistance, runTime){
+    /* função que verifica se o candidato passou no teste de corrida */
     if (gender == "male"){
         if(runDistance >= runDistanceHomen1){ 
             if (runTime <= runTimeHomen1){
@@ -121,11 +129,24 @@ function isRun(gender, runDistance, runTime){
 }
 
 
-function areCandidateResultsValid(gender, height, bareps, bartime, absRep, runDistance, runTime, swimDistance, swimTime, diveTime) {
-    const result = isAbs(gender, absRep) && isHeight(gender, height) && isBarReps(gender, bareps, bartime) && isSwim(gender, swimDistance, swimTime, diveTime) && isRun(gender,runDistance,runTime)
+function areCandidateResultsValid(gender, height, bareps, bartime, absRep, runDistance,
+                                 runTime, swimDistance, swimTime, diveTime) {
+    /* função que avalia se o candidato passou em todos os testes */                                
+    const result = (isAbs(gender, absRep)
+                && isHeight(gender, height) 
+                && isBarReps(gender, bareps, bartime)
+                && isSwim(gender, swimDistance, swimTime, diveTime)
+                && isRun(gender,runDistance,runTime))
     return result
 }
 function showMessage(message){
+    /* função que retorna um log no console se o candidato passou 
+        deixei um:  
+        if (message == undefined){
+        message = false
+        }   
+    pra corrigir um bug que eu não consegui tratar de retornar "undefined"
+    */
     if (message == undefined){
         message = false
     }
